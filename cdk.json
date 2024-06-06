@@ -1,0 +1,3 @@
+{
+  "app": "python cdk/serverless_and_ai/app.py"
+}

@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "serverless-and-ai-cdk"
+version = "0.1.0"
+description = "This is the project showcasing capabilities of AI working together in a serverless manner within AWS cloud."
+authors = ["amswiatkowski <adam.swiatkowski@iodi.pl>"]
+packages = [{ include = "serverless_and_ai" }]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+# 3rdparties
+aws-cdk-lib = ">=2.0.0"
+constructs = ">=10.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
