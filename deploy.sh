@@ -25,4 +25,7 @@ if [ -z "$DEPLOY_ENV" ]; then
 fi
 echo "Region: $REGION"
 echo "Environment: $DEPLOY_ENV"
+rm -rf .build
+mkdir -p .build/lambdas ; cp -r lambda_handlers .build/lambdas
+mkdir -p .build/common_layer ; poetry export --without=dev --without-hashes --format=requirements.txt > .build/common_layer/requirements.txt
 REGION=$REGION AWS_REGION=$REGION AWS_DEFAULT_REGION=$REGION DEPLOY_ENV=$DEPLOY_ENV cdk deploy --all --verbose --region $REGION --require-approval never

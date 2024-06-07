@@ -16,5 +16,4 @@ def cfn_reader() -> dict[str, str]:
         outputs.update({output["OutputKey"]: output["OutputValue"]})
     logger.info(f'Got the following outputs: {outputs}',
                 extra={'outputs': outputs})
-    print(f'Got the following outputs: {outputs}')
     return outputs
