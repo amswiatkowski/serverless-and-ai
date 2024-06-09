@@ -213,17 +213,17 @@ typeguard = ">=2.13.3,<2.14.0"
 
 [[package]]
 name = "aws-cdk-aws-lambda-python-alpha"
-version = "2.144.0a0"
+version = "2.145.0a0"
 description = "The CDK Construct Library for AWS Lambda in Python"
 optional = false
 python-versions = "~=3.8"
 files = [
-    {file = "aws-cdk.aws-lambda-python-alpha-2.144.0a0.tar.gz", hash = "sha256:a1988be0733708e16abe7b72a904eab38129d876be4cb8c8c30937d55e9e6a87"},
-    {file = "aws_cdk.aws_lambda_python_alpha-2.144.0a0-py3-none-any.whl", hash = "sha256:2381d59a2bddba01af0fe9bef20a7235a38e61e2f349379dcc8ff0742933d9ed"},
+    {file = "aws-cdk.aws-lambda-python-alpha-2.145.0a0.tar.gz", hash = "sha256:03e5f1474b784ce44a5a558de1f653ac1b13d3c717bd92a9b30e5929c61c4da8"},
+    {file = "aws_cdk.aws_lambda_python_alpha-2.145.0a0-py3-none-any.whl", hash = "sha256:62fcec993df90ee56c84f823bf96bc2845f7b507758b4d7a64348a14d8511f7a"},
 ]
 
 [package.dependencies]
-aws-cdk-lib = ">=2.144.0,<3.0.0"
+aws-cdk-lib = ">=2.145.0,<3.0.0"
 constructs = ">=10.0.0,<11.0.0"
 jsii = ">=1.98.0,<2.0.0"
 publication = ">=0.0.3"
@@ -231,13 +231,13 @@ typeguard = ">=2.13.3,<2.14.0"
 
 [[package]]
 name = "aws-cdk-lib"
-version = "2.144.0"
+version = "2.145.0"
 description = "Version 2 of the AWS Cloud Development Kit library"
 optional = false
 python-versions = "~=3.8"
 files = [
-    {file = "aws-cdk-lib-2.144.0.tar.gz", hash = "sha256:355cdb0550c49de6bc74c8a97c6b015d2f54f5a65b4c1776591d7691850e3386"},
-    {file = "aws_cdk_lib-2.144.0-py3-none-any.whl", hash = "sha256:6c98bec065d4cd254f7a46c64331637df5197b9c2a2e0d1aed9fabab30bdaa28"},
+    {file = "aws-cdk-lib-2.145.0.tar.gz", hash = "sha256:be9dc62747e6a2fe6b91f77675fbf8f8daed2c3e10174b860a831128045437dd"},
+    {file = "aws_cdk_lib-2.145.0-py3-none-any.whl", hash = "sha256:92261768346ec02d958978124e474bb41674ee3630580fdbf034a593a1c5bbc7"},
 ]
 
 [package.dependencies]
@@ -329,17 +329,17 @@ files = [
 
 [[package]]
 name = "boto3"
-version = "1.34.121"
+version = "1.34.122"
 description = "The AWS SDK for Python"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "boto3-1.34.121-py3-none-any.whl", hash = "sha256:4e79e400d6d44b4eee5deda6ac0ecd08a3f5a30c45a0d30712795cdc4459fd79"},
-    {file = "boto3-1.34.121.tar.gz", hash = "sha256:ec89f3e0b0dc959c418df29e14d3748c0b05ab7acf7c0b90c839e9f340a659fa"},
+    {file = "boto3-1.34.122-py3-none-any.whl", hash = "sha256:b2d7400ff84fa547e53b3d9acfa3c95d65d45b5886ba1ede1f7df4768d1cc0b1"},
+    {file = "boto3-1.34.122.tar.gz", hash = "sha256:56840d8ce91654d182f1c113f0791fa2113c3aa43230c50b4481f235348a6037"},
 ]
 
 [package.dependencies]
-botocore = ">=1.34.121,<1.35.0"
+botocore = ">=1.34.122,<1.35.0"
 jmespath = ">=0.7.1,<2.0.0"
 s3transfer = ">=0.10.0,<0.11.0"
 
@@ -348,13 +348,13 @@ crt = ["botocore[crt] (>=1.21.0,<2.0a0)"]
 
 [[package]]
 name = "boto3-stubs"
-version = "1.34.121"
-description = "Type annotations for boto3 1.34.121 generated with mypy-boto3-builder 7.24.0"
+version = "1.34.122"
+description = "Type annotations for boto3 1.34.122 generated with mypy-boto3-builder 7.24.0"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "boto3_stubs-1.34.121-py3-none-any.whl", hash = "sha256:dd2c3f7680783d8538ebb204e7e91d6a070f863fc7bf32f7c3dbb9e32b22948c"},
-    {file = "boto3_stubs-1.34.121.tar.gz", hash = "sha256:b6a2c99810c16e47d59872a66125bfe87d5afb97b5613657a15c6875d5e3536e"},
+    {file = "boto3_stubs-1.34.122-py3-none-any.whl", hash = "sha256:861d12fe7ab8dee3badac5addc95f24dc1cb097677e8f635678c6be4b8ad95cf"},
+    {file = "boto3_stubs-1.34.122.tar.gz", hash = "sha256:80974a53998d880af974c54d584fd70733b10f84246e40e7458eaf4d3b27a176"},
 ]
 
 [package.dependencies]
@@ -406,7 +406,7 @@ bedrock-agent = ["mypy-boto3-bedrock-agent (>=1.34.0,<1.35.0)"]
 bedrock-agent-runtime = ["mypy-boto3-bedrock-agent-runtime (>=1.34.0,<1.35.0)"]
 bedrock-runtime = ["mypy-boto3-bedrock-runtime (>=1.34.0,<1.35.0)"]
 billingconductor = ["mypy-boto3-billingconductor (>=1.34.0,<1.35.0)"]
-boto3 = ["boto3 (==1.34.121)", "botocore (==1.34.121)"]
+boto3 = ["boto3 (==1.34.122)", "botocore (==1.34.122)"]
 braket = ["mypy-boto3-braket (>=1.34.0,<1.35.0)"]
 budgets = ["mypy-boto3-budgets (>=1.34.0,<1.35.0)"]
 ce = ["mypy-boto3-ce (>=1.34.0,<1.35.0)"]
@@ -754,13 +754,13 @@ xray = ["mypy-boto3-xray (>=1.34.0,<1.35.0)"]
 
 [[package]]
 name = "botocore"
-version = "1.34.121"
+version = "1.34.122"
 description = "Low-level, data-driven core of boto 3."
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "botocore-1.34.121-py3-none-any.whl", hash = "sha256:25b05c7646a9f240cde1c8f839552a43f27e71e15c42600275dea93e219f7dd9"},
-    {file = "botocore-1.34.121.tar.gz", hash = "sha256:1a8f94b917c47dfd84a0b531ab607dc53570efb0d073d8686600f2d2be985323"},
+    {file = "botocore-1.34.122-py3-none-any.whl", hash = "sha256:6d75df3af831b62f0c7baa109728d987e0a8d34bfadf0476eb32e2f29a079a36"},
+    {file = "botocore-1.34.122.tar.gz", hash = "sha256:9374e16a36f1062c3e27816e8599b53eba99315dfac71cc84fc3aee3f5d3cbe3"},
 ]
 
 [package.dependencies]
@@ -773,13 +773,13 @@ crt = ["awscrt (==0.20.11)"]
 
 [[package]]
 name = "botocore-stubs"
-version = "1.34.121"
+version = "1.34.122"
 description = "Type annotations and code completion for botocore"
 optional = false
 python-versions = "<4.0,>=3.8"
 files = [
-    {file = "botocore_stubs-1.34.121-py3-none-any.whl", hash = "sha256:fc13e608fef519804c669d61afb5ffe4128b37093c91b916287e7f2d4bc58a1e"},
-    {file = "botocore_stubs-1.34.121.tar.gz", hash = "sha256:f0ebc573d400fc7c4ad6d85753e37da62f2865e9e54c7d35280b627d9ba84bde"},
+    {file = "botocore_stubs-1.34.122-py3-none-any.whl", hash = "sha256:dda8ea2edb1b5098e6b881a13b0197735c01a2d52ae2916f2abdda3045efbe0b"},
+    {file = "botocore_stubs-1.34.122.tar.gz", hash = "sha256:a17d4c5b5a3c10e8fab66dc17fbf2a1dbcc9da60b8e09d23a6cf851ccedbfaaf"},
 ]
 
 [package.dependencies]
@@ -975,13 +975,13 @@ typeguard = ">=2.13.3,<2.14.0"
 
 [[package]]
 name = "dataclasses-json"
-version = "0.6.6"
+version = "0.6.7"
 description = "Easily serialize dataclasses to and from JSON."
 optional = false
 python-versions = "<4.0,>=3.7"
 files = [
-    {file = "dataclasses_json-0.6.6-py3-none-any.whl", hash = "sha256:e54c5c87497741ad454070ba0ed411523d46beb5da102e221efb873801b0ba85"},
-    {file = "dataclasses_json-0.6.6.tar.gz", hash = "sha256:0c09827d26fffda27f1be2fed7a7a01a29c5ddcd2eb6393ad5ebf9d77e9deae8"},
+    {file = "dataclasses_json-0.6.7-py3-none-any.whl", hash = "sha256:0dbf33f26c8d5305befd61b39d2b3414e8a407bedc2834dea9b8d642666fb40a"},
+    {file = "dataclasses_json-0.6.7.tar.gz", hash = "sha256:b6b3e528266ea45b9535223bc53ca645f5208833c29229e847b3f26a1cc55fc0"},
 ]
 
 [package.dependencies]
@@ -2879,13 +2879,13 @@ files = [
 
 [[package]]
 name = "typing-extensions"
-version = "4.12.1"
+version = "4.12.2"
 description = "Backported and Experimental Type Hints for Python 3.8+"
 optional = false
 python-versions = ">=3.8"
 files = [
-    {file = "typing_extensions-4.12.1-py3-none-any.whl", hash = "sha256:6024b58b69089e5a89c347397254e35f1bf02a907728ec7fee9bf0fe837d203a"},
-    {file = "typing_extensions-4.12.1.tar.gz", hash = "sha256:915f5e35ff76f56588223f15fdd5938f9a1cf9195c0de25130c627e4d597f6d1"},
+    {file = "typing_extensions-4.12.2-py3-none-any.whl", hash = "sha256:04e5ca0351e0f3f85c6853954072df659d0d13fac324d0072316b67d7794700d"},
+    {file = "typing_extensions-4.12.2.tar.gz", hash = "sha256:1a7ead55c7e559dd4dee8856e3a88b41225abfe1ce8df57b7c13915fe121ffb8"},
 ]
 
 [[package]]

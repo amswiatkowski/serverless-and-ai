@@ -1,5 +1,7 @@
 
 # Serverless and AI
+<img src="diagram/serverless_and_ai-chatbot_infrastructure_diagram.png" alt="Serverless and AI - Chatbot infrastructure">
+<br><br>
 
 ## Description
 This is a simple project developed with Python and AWS CDK showing how to create our first project using AWS serverless services (e.g. AWS Lambda) together with AI service Amazon Bedrock. It was used for the demo session on 12th of June 2024 during AWS User Group Meetup in Warsaw, Poland on the session called "Serverless and AI - Can this be the new technological love story?".
@@ -19,16 +21,15 @@ This is a simple project developed with Python and AWS CDK showing how to create
    ```
 2. Install dependencies
     ```sh
-    poetry install
+    poetry install --sync
     ```
 3. Deploy the project
    ```sh
-   ./deploy.sh
+   ./deploy.sh --region us-east-1
 4. Run frontend locally to be able to have a conversation with chatbot
    ```sh
    ./run_webapp.sh
-   ```   ```
-
+   ```
 
 ## Useful commands
  * `./lint.sh`          Fixes indents and checks your code quality
