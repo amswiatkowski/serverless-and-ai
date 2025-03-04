@@ -13,7 +13,6 @@ serverless_and_stack = ServerlessAndAIStack(
     app,
     get_stack_name(),
     description='Serverless and AI stack',
-    env=Environment(account=os.environ.get('AWS_DEFAULT_ACCOUNT', account),
-                    region=os.environ.get('AWS_DEFAULT_REGION', region)),
+    env=Environment(account=os.environ.get('AWS_DEFAULT_ACCOUNT', account), region=os.environ.get('AWS_DEFAULT_REGION', region)),
 )
 app.synth()

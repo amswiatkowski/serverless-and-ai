@@ -14,6 +14,5 @@ def cfn_reader() -> dict[str, str]:
     outputs = {}
     for output in response["Stacks"][0]["Outputs"]:
         outputs.update({output["OutputKey"]: output["OutputValue"]})
-    logger.info(f'Got the following outputs: {outputs}',
-                extra={'outputs': outputs})
+    logger.info(f'Got the following outputs: {outputs}', extra={'outputs': outputs})
     return outputs

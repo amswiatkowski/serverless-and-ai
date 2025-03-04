@@ -4,10 +4,7 @@ import inspect
 import os.path
 import sys
 
-sys.path.append(
-    os.path.join(
-        os.path.dirname(
-            os.path.abspath(inspect.getfile(inspect.currentframe()))), '../'))
+sys.path.append(os.path.join(os.path.dirname(os.path.abspath(inspect.getfile(inspect.currentframe()))), '../'))
 from utils.cfn_reader import cfn_reader
 
 

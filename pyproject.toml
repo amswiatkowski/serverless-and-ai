@@ -20,6 +20,7 @@ boto3-stubs = { version = "*", extras = ["cloudformation", "bedrock", "lambda"] 
 aws-lambda-typing = "*"
 langchain = "*"
 langchain-community = "*"
+langchain-aws = "*"
 redis = "*"
 
 [tool.poetry.group.dev.dependencies]

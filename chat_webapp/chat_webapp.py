@@ -2,10 +2,14 @@
 
 import os
 import time
+import uuid
 
 import requests
 import streamlit as st
 from requests import Response
+
+if "USER_ID" not in st.session_state:
+    st.session_state.USER_ID = str(uuid.uuid4())
 
 
 def get_api_gateway_url():
@@ -20,10 +24,8 @@ def get_api_gateway_url():
 
 def response_generator(prompt: str):
     api_url = f'{get_api_gateway_url()}chat/prompt'
-    print(f'calling {api_url}. With prompt: {prompt}')
-    response: Response = requests.post(api_url,
-                                       json={'question': prompt},
-                                       timeout=120)
+    print(f'User: {st.session_state.USER_ID} is calling: {api_url} with prompt: {prompt}')
+    response: Response = requests.post(api_url, json={'user_id': st.session_state.USER_ID, 'question': prompt}, timeout=120)
 
     answer = f'{response.text} (Response took: {response.elapsed.total_seconds()}s)'
     for word in answer.split():
@@ -54,7 +56,4 @@ if prompt := st.chat_input("What is up?"):
     with st.chat_message("assistant"):
         response = st.write_stream(response_generator(prompt))
     # Add assistant response to chat history
-    st.session_state.messages.append({
-        "role": "assistant",
-        "content": response
-    })
+    st.session_state.messages.append({"role": "assistant", "content": response})

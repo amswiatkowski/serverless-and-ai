@@ -4,8 +4,9 @@ from aws_cdk.aws_logs import RetentionDays
 from constructs import Construct
 from serverless_and_ai.constants import (API_HANDLER_LAMBDA_MEMORY_SIZE,
                                          API_HANDLER_LAMBDA_TIMEOUT,
-                                         BUILD_FOLDER, LAMBDA_ARCHITECTURE,
-                                         LAMBDA_RUNTIME, POWER_TOOLS_LOG_LEVEL,
+                                         BEDROCK_MODEL_ID, BUILD_FOLDER,
+                                         LAMBDA_ARCHITECTURE, LAMBDA_RUNTIME,
+                                         POWER_TOOLS_LOG_LEVEL,
                                          POWERTOOLS_SERVICE_NAME, SERVICE_NAME)
 
 
@@ -21,59 +22,40 @@ class ChatBotApiConstruct(Construct):
         self.chatbot_lambda_function = self._build_lambda_function()
         root_resource = self.chatbot_api.root.add_resource('chat')
         prompt_resource = root_resource.add_resource('prompt')
-        prompt_resource.add_method(
-            'POST',
-            integration=aws_apigateway.LambdaIntegration(
-                handler=self.chatbot_lambda_function))
+        prompt_resource.add_method('POST', integration=aws_apigateway.LambdaIntegration(handler=self.chatbot_lambda_function))
 
-    def _build_lambda_layer(
-            self) -> aws_lambda_python_alpha.PythonLayerVersion:
-        layer = aws_lambda_python_alpha.PythonLayerVersion(
-            scope=self,
-            id='ChatbotLambdaLayer',
-            entry='.build/common_layer',
-            compatible_architectures=[LAMBDA_ARCHITECTURE],
-            compatible_runtimes=[LAMBDA_RUNTIME],
-            removal_policy=RemovalPolicy.DESTROY)
+    def _build_lambda_layer(self) -> aws_lambda_python_alpha.PythonLayerVersion:
+        layer = aws_lambda_python_alpha.PythonLayerVersion(scope=self, id='ChatbotLambdaLayer', entry='.build/common_layer',
+                                                           compatible_architectures=[LAMBDA_ARCHITECTURE],
+                                                           compatible_runtimes=[LAMBDA_RUNTIME], removal_policy=RemovalPolicy.DESTROY)
         return layer
 
     def _build_lambda_role(self) -> aws_iam.Role:
         lambda_role = aws_iam.Role(
-            scope=self,
-            id='chatbot-lambda-role',
-            assumed_by=aws_iam.ServicePrincipal('lambda.amazonaws.com'),
-            role_name='chatbot-lambda-role',
-            managed_policies=[
-                aws_iam.ManagedPolicy.from_aws_managed_policy_name(
-                    'service-role/AWSLambdaBasicExecutionRole'),
-                aws_iam.ManagedPolicy.from_aws_managed_policy_name(
-                    'service-role/AWSLambdaVPCAccessExecutionRole')
-            ],
-            inline_policies={
+            scope=self, id='chatbot-lambda-role', assumed_by=aws_iam.ServicePrincipal('lambda.amazonaws.com'),
+            role_name='chatbot-lambda-role', managed_policies=[
+                aws_iam.ManagedPolicy.from_aws_managed_policy_name('service-role/AWSLambdaBasicExecutionRole'),
+                aws_iam.ManagedPolicy.from_aws_managed_policy_name('service-role/AWSLambdaVPCAccessExecutionRole')
+            ], inline_policies={
                 'bedrock_policies':
-                aws_iam.PolicyDocument(statements=[
-                    aws_iam.PolicyStatement(
-                        actions=['bedrock:InvokeModel'],
-                        resources=[
-                            'arn:aws:bedrock:*::foundation-model/meta.llama2-13b-chat-v1'
-                        ],
-                        effect=aws_iam.Effect.ALLOW,
-                    )
-                ]),
+                    aws_iam.PolicyDocument(statements=[
+                        aws_iam.PolicyStatement(
+                            actions=['bedrock:InvokeModel'],
+                            resources=[f'arn:aws:bedrock:*::foundation-model/{BEDROCK_MODEL_ID}'],
+                            effect=aws_iam.Effect.ALLOW,
+                        )
+                    ]),
                 'vpc_policies':
-                aws_iam.PolicyDocument(statements=[
-                    aws_iam.PolicyStatement(
-                        actions=[
-                            "ec2:DescribeNetworkInterfaces",
-                            "ec2:CreateNetworkInterface",
-                            "ec2:DeleteNetworkInterface",
-                            "ec2:DescribeInstances",
-                            "ec2:AttachNetworkInterface", "elasticache:Connect"
-                        ],
-                        resources=['*'],
-                        effect=aws_iam.Effect.ALLOW,
-                    )
-                ])
+                    aws_iam.PolicyDocument(statements=[
+                        aws_iam.PolicyStatement(
+                            actions=[
+                                "ec2:DescribeNetworkInterfaces", "ec2:CreateNetworkInterface", "ec2:DeleteNetworkInterface",
+                                "ec2:DescribeInstances", "ec2:AttachNetworkInterface", "elasticache:Connect"
+                            ],
+                            resources=['*'],
+                            effect=aws_iam.Effect.ALLOW,
+                        )
+                    ])
             })
         return lambda_role
 
@@ -87,13 +69,10 @@ class ChatBotApiConstruct(Construct):
             code=aws_lambda.Code.from_asset(BUILD_FOLDER),
             handler='lambda_handlers.chatbot_handler.handler',
             environment={
-                POWERTOOLS_SERVICE_NAME:
-                SERVICE_NAME,  # for logger, tracer and metrics
-                POWER_TOOLS_LOG_LEVEL:
-                'DEBUG',  # for logger
-                'ELASTICACHE_ENDPOINT':
-                self._scope.chatbot_cache_construct.elasticache_cluster.
-                attr_endpoint_address
+                POWERTOOLS_SERVICE_NAME: SERVICE_NAME,  # for logger, tracer and metrics
+                POWER_TOOLS_LOG_LEVEL: 'DEBUG',  # for logger
+                'ELASTICACHE_ENDPOINT': self._scope.chatbot_cache_construct.elasticache_cluster.attr_endpoint_address,
+                'BEDROCK_MODEL_ID': BEDROCK_MODEL_ID
             },
             tracing=aws_lambda.Tracing.ACTIVE,
             retry_attempts=0,
@@ -102,16 +81,10 @@ class ChatBotApiConstruct(Construct):
             layers=[self.chatbot_lambda_layer],
             role=self.chatbot_lambda_role,
             log_retention=RetentionDays.ONE_DAY,
-            log_format=aws_lambda.LogFormat.JSON.value,
-            system_log_level=aws_lambda.SystemLogLevel.DEBUG.value,
             vpc=self._scope.chatbot_network_construct.vpc,
-            vpc_subnets=aws_ec2.SubnetSelection(
-                subnet_type=aws_ec2.SubnetType.PRIVATE_WITH_EGRESS),
+            vpc_subnets=aws_ec2.SubnetSelection(subnet_type=aws_ec2.SubnetType.PRIVATE_WITH_EGRESS),
             security_groups=[self._scope.chatbot_network_construct.vpc_sg])
-        aws_lambda.Alias(self,
-                         id='ChatbotLambdaAlias',
-                         alias_name='chatbot-lambda',
-                         version=lambda_function.current_version)
+        aws_lambda.Alias(self, id='ChatbotLambdaAlias', alias_name='chatbot-lambda', version=lambda_function.current_version)
         return lambda_function
 
     def _build_apigw(self) -> aws_apigateway.RestApi:
@@ -120,12 +93,10 @@ class ChatBotApiConstruct(Construct):
             'chatbot-rest-api',
             rest_api_name='Chatbot Rest API',
             description='This service handles chatbot prompts',
-            deploy_options=aws_apigateway.StageOptions(
-                throttling_rate_limit=2, throttling_burst_limit=10),
+            deploy_options=aws_apigateway.StageOptions(throttling_rate_limit=2, throttling_burst_limit=10),
             cloud_watch_role=False,
         )
 
-        CfnOutput(self, id='CHATBOT_API_URL',
-                  value=rest_api.url).override_logical_id('APIURL')
+        CfnOutput(self, id='CHATBOT_API_URL', value=rest_api.url).override_logical_id('APIURL')
 
         return rest_api

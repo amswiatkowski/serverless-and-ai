@@ -10,9 +10,6 @@ class ServerlessAndAIStack(Stack):
 
     def __init__(self, scope: Construct, construct_id: str, **kwargs) -> None:
         super().__init__(scope, construct_id, **kwargs)
-        self.chatbot_network_construct = ChatBotNetworkConstruct(
-            self, 'ChatbotNetworkConstruct')
-        self.chatbot_cache_construct = ChatBotCacheConstruct(
-            self, 'ChatbotCacheConstruct')
-        self.chatbot_api_construct = ChatBotApiConstruct(
-            self, 'ChatbotApiConstruct')
+        self.chatbot_network_construct = ChatBotNetworkConstruct(self, 'ChatbotNetworkConstruct')
+        self.chatbot_cache_construct = ChatBotCacheConstruct(self, 'ChatbotCacheConstruct')
+        self.chatbot_api_construct = ChatBotApiConstruct(self, 'ChatbotApiConstruct')
