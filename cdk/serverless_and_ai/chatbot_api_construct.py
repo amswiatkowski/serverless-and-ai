@@ -1,13 +1,17 @@
-from aws_cdk import (CfnOutput, Duration, RemovalPolicy, aws_apigateway,
-                     aws_ec2, aws_iam, aws_lambda, aws_lambda_python_alpha)
+from aws_cdk import CfnOutput, Duration, RemovalPolicy, aws_apigateway, aws_ec2, aws_iam, aws_lambda, aws_lambda_python_alpha
 from aws_cdk.aws_logs import RetentionDays
 from constructs import Construct
-from serverless_and_ai.constants import (API_HANDLER_LAMBDA_MEMORY_SIZE,
-                                         API_HANDLER_LAMBDA_TIMEOUT,
-                                         BEDROCK_MODEL_ID, BUILD_FOLDER,
-                                         LAMBDA_ARCHITECTURE, LAMBDA_RUNTIME,
-                                         POWER_TOOLS_LOG_LEVEL,
-                                         POWERTOOLS_SERVICE_NAME, SERVICE_NAME)
+from serverless_and_ai.constants import (
+    API_HANDLER_LAMBDA_MEMORY_SIZE,
+    API_HANDLER_LAMBDA_TIMEOUT,
+    BEDROCK_MODEL_ID,
+    BUILD_FOLDER,
+    LAMBDA_ARCHITECTURE,
+    LAMBDA_RUNTIME,
+    POWER_TOOLS_LOG_LEVEL,
+    POWERTOOLS_SERVICE_NAME,
+    SERVICE_NAME,
+)
 
 
 class ChatBotApiConstruct(Construct):

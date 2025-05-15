@@ -1,8 +1,7 @@
 from aws_cdk import Stack
 from constructs import Construct
 from serverless_and_ai.chatbot_api_construct import ChatBotApiConstruct
-from serverless_and_ai.chatbot_api_network_construct import \
-    ChatBotNetworkConstruct
+from serverless_and_ai.chatbot_api_network_construct import ChatBotNetworkConstruct
 from serverless_and_ai.chatbot_cache_construct import ChatBotCacheConstruct
 
 
