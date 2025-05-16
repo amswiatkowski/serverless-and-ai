@@ -257,20 +257,20 @@ typeguard = ">=2.13.3,<5.0.0"
 
 [[package]]
 name = "aws-cdk-aws-lambda-python-alpha"
-version = "2.195.0a0"
+version = "2.196.0a0"
 description = "The CDK Construct Library for AWS Lambda in Python"
 optional = false
 python-versions = "~=3.9"
 groups = ["dev"]
 files = [
-    {file = "aws_cdk_aws_lambda_python_alpha-2.195.0a0-py3-none-any.whl", hash = "sha256:670a09d51a521ae7a0c3bf7a4dcc4a120505b624fd6241cbd047e25c498454c3"},
-    {file = "aws_cdk_aws_lambda_python_alpha-2.195.0a0.tar.gz", hash = "sha256:e4a423ccfc5a2d30fcb71b8b3bdc958ee9c1694e63e503602910419d01660215"},
+    {file = "aws_cdk_aws_lambda_python_alpha-2.196.0a0-py3-none-any.whl", hash = "sha256:a60c9d98b7e7e527d2f38ec492ccb01c406cab5993b8ca0b858b410ec43461c6"},
+    {file = "aws_cdk_aws_lambda_python_alpha-2.196.0a0.tar.gz", hash = "sha256:d79e41716abcd85d658df0090ba25ed1da1f2d53e6d3c6e1512fdcf4385cf634"},
 ]
 
 [package.dependencies]
-aws-cdk-lib = ">=2.195.0,<3.0.0"
+aws-cdk-lib = ">=2.196.0,<3.0.0"
 constructs = ">=10.0.0,<11.0.0"
-jsii = ">=1.110.0,<2.0.0"
+jsii = ">=1.112.0,<2.0.0"
 publication = ">=0.0.3"
 typeguard = ">=2.13.3,<4.3.0"
 
@@ -293,22 +293,22 @@ typeguard = ">=2.13.3,<4.3.0"
 
 [[package]]
 name = "aws-cdk-lib"
-version = "2.195.0"
+version = "2.196.0"
 description = "Version 2 of the AWS Cloud Development Kit library"
 optional = false
 python-versions = "~=3.9"
 groups = ["dev"]
 files = [
-    {file = "aws_cdk_lib-2.195.0-py3-none-any.whl", hash = "sha256:9087fca8dbe5cf256cdcbf00f0c6e452ceeb66452aea5878728633a379e7aa56"},
-    {file = "aws_cdk_lib-2.195.0.tar.gz", hash = "sha256:6617bc60dc1e37826f16d8932df73e6a062922cef12bf11e9f12becbdda73f33"},
+    {file = "aws_cdk_lib-2.196.0-py3-none-any.whl", hash = "sha256:8327a594cd5f29a4ee161f44d24ad7a13aaa325f662c837c6c8b4749de0a670d"},
+    {file = "aws_cdk_lib-2.196.0.tar.gz", hash = "sha256:9e950946c7d55d387850eb5858e35b7735c376151431fcb9c6042481ec16882d"},
 ]
 
 [package.dependencies]
-"aws-cdk.asset-awscli-v1" = ">=2.2.229,<3.0.0"
+"aws-cdk.asset-awscli-v1" = "2.2.236"
 "aws-cdk.asset-node-proxy-agent-v6" = ">=2.1.0,<3.0.0"
 "aws-cdk.cloud-assembly-schema" = ">=41.2.0,<42.0.0"
 constructs = ">=10.0.0,<11.0.0"
-jsii = ">=1.110.0,<2.0.0"
+jsii = ">=1.112.0,<2.0.0"
 publication = ">=0.0.3"
 typeguard = ">=2.13.3,<4.3.0"
 
@@ -3676,14 +3676,14 @@ test = ["mypy ; platform_python_implementation != \"PyPy\"", "pytest", "typing-e
 
 [[package]]
 name = "types-awscrt"
-version = "0.27.1"
+version = "0.27.2"
 description = "Type annotations and code completion for awscrt"
 optional = false
 python-versions = ">=3.8"
 groups = ["main"]
 files = [
-    {file = "types_awscrt-0.27.1-py3-none-any.whl", hash = "sha256:e86b83d0fd8c770f985b8c458c28e232dae9adee0689d0a9671868a8bf397b0a"},
-    {file = "types_awscrt-0.27.1.tar.gz", hash = "sha256:3c2bee52ee45022daaf4f106d5d1b5f0ff0a8e3e6093dda65f5315b7669bc418"},
+    {file = "types_awscrt-0.27.2-py3-none-any.whl", hash = "sha256:49a045f25bbd5ad2865f314512afced933aed35ddbafc252e2268efa8a787e4e"},
+    {file = "types_awscrt-0.27.2.tar.gz", hash = "sha256:acd04f57119eb15626ab0ba9157fc24672421de56e7bd7b9f61681fedee44e91"},
 ]
 
 [[package]]

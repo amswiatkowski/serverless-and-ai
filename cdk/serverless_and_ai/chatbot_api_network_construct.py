@@ -20,4 +20,4 @@ class ChatBotNetworkConstruct(Construct):
                                enable_dns_hostnames=True)
         self.vpc_sg = aws_ec2.SecurityGroup(self, "ChatBotVPCSecurityGroup", vpc=self.vpc, allow_all_outbound=True)
         self.vpc_sg.connections.allow_from(
-            aws_ec2.Peer.ipv4(self._VPC_CIDR), aws_ec2.Port.tcp(self._REDIS_PORT), description='Allow Redis access from witihin VPC CIDR')
+            aws_ec2.Peer.ipv4(self._VPC_CIDR), aws_ec2.Port.tcp(self._REDIS_PORT), description='Allow Redis access from within VPC CIDR')

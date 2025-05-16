@@ -40,9 +40,7 @@ def handler(event: events.APIGatewayProxyEventV1, context: Context) -> Response:
 def _prepare_response(request: dict[str, Any], context: Context) -> dict[str, Any]:
     user_id = request.get('user_id')
     question = request.get('question')
-    logger.info('Asking AI...', extra={'user_id': user_id, 'question': question})
 
-    llm = __get_llm()
     logger.debug('Enabling caching for LLM responses', extra={'user_id': user_id})
     redis_client = Redis.from_url(url=f"rediss://{os.getenv('ELASTICACHE_ENDPOINT')}:6379", decode_responses=True)
     logger.debug('Pinging redis...', extra={'ping': redis_client.ping()})
@@ -55,10 +53,13 @@ def _prepare_response(request: dict[str, Any], context: Context) -> dict[str, An
     else:
         logger.info(f'Continuing conversation with User {user_id}', extra={'user_id': user_id})
     conversation_history.append({"role": "human", "content": question})
+    logger.info('Asking AI...', extra={'user_id': user_id, 'question': question})
+    llm = __get_llm()
     response_content = _get_response_from_llm(llm, conversation_history)
     conversation_history.append({"role": "assistant", "content": response_content})
 
     __save_conversation_history(user_id, conversation_history, redis_client)
+    logger.info('Sending the response to user...', extra={'user_id': user_id, 'question': response_content})
 
     return {"body": response_content}
 

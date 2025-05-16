@@ -45,18 +45,15 @@ class ChatBotApiConstruct(Construct):
                     aws_iam.PolicyDocument(statements=[
                         aws_iam.PolicyStatement(
                             actions=['bedrock:InvokeModel'],
-                            resources=[f'arn:aws:bedrock:*::foundation-model/{BEDROCK_MODEL_ID}'],
+                            resources=[f'arn:aws:bedrock:{self._scope.region}::foundation-model/{BEDROCK_MODEL_ID}'],
                             effect=aws_iam.Effect.ALLOW,
                         )
                     ]),
                 'vpc_policies':
                     aws_iam.PolicyDocument(statements=[
                         aws_iam.PolicyStatement(
-                            actions=[
-                                "ec2:DescribeNetworkInterfaces", "ec2:CreateNetworkInterface", "ec2:DeleteNetworkInterface",
-                                "ec2:DescribeInstances", "ec2:AttachNetworkInterface", "elasticache:Connect"
-                            ],
-                            resources=['*'],
+                            actions=["elasticache:Connect"],
+                            resources=[self._scope.chatbot_cache_construct.elasticache_cluster.attr_arn],
                             effect=aws_iam.Effect.ALLOW,
                         )
                     ])
