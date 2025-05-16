@@ -19,11 +19,14 @@ tracer = Tracer()
 logger: Logger = Logger()
 app = APIGatewayRestResolver()
 
+redis_client = Redis.from_url(url=f"rediss://{os.getenv('ELASTICACHE_ENDPOINT')}:6379", decode_responses=True)
+set_llm_cache(RedisCache(redis_=redis_client))
+
 
 @logger.inject_lambda_context(correlation_id_path=correlation_paths.API_GATEWAY_REST)
 @tracer.capture_lambda_handler
 def handler(event: events.APIGatewayProxyEventV1, context: Context) -> Response:
-    logger.debug('Received prompt', extra={'event': event})
+    logger.debug('Received request')
     try:
         response = _prepare_response(json.loads(event['body']), context)
         logger.debug('Sending response', extra={'response': response})
@@ -41,12 +44,9 @@ def _prepare_response(request: dict[str, Any], context: Context) -> dict[str, An
     user_id = request.get('user_id')
     question = request.get('question')
 
-    logger.debug('Enabling caching for LLM responses', extra={'user_id': user_id})
-    redis_client = Redis.from_url(url=f"rediss://{os.getenv('ELASTICACHE_ENDPOINT')}:6379", decode_responses=True)
-    logger.debug('Pinging redis...', extra={'ping': redis_client.ping()})
-    set_llm_cache(RedisCache(redis_=redis_client))
+    logger.debug('pinging redis...', extra={'ping': redis_client.ping()})
 
-    conversation_history = __get_conversation_history(user_id, redis_client)
+    conversation_history = __get_conversation_history(user_id)
     if not conversation_history:
         logger.info(f'This is the beginning of the conversation with User {user_id}', extra={'user_id': user_id})
         conversation_history.append({"role": "system", "content": "You are a helpful, respectful and honest assistant. Your name is Tony."})
@@ -58,13 +58,13 @@ def _prepare_response(request: dict[str, Any], context: Context) -> dict[str, An
     response_content = _get_response_from_llm(llm, conversation_history)
     conversation_history.append({"role": "assistant", "content": response_content})
 
-    __save_conversation_history(user_id, conversation_history, redis_client)
+    __save_conversation_history(user_id, conversation_history)
     logger.info('Sending the response to user...', extra={'user_id': user_id, 'question': response_content})
 
     return {"body": response_content}
 
 
-def __get_conversation_history(user_id: str, redis_client: Redis) -> list[dict[str, str]]:
+def __get_conversation_history(user_id: str) -> list[dict[str, str]]:
     try:
         history = redis_client.get(user_id)
         logger.debug(f'Getting conversation with the User {user_id}', extra={'user_id': user_id, 'history': history})
@@ -76,7 +76,7 @@ def __get_conversation_history(user_id: str, redis_client: Redis) -> list[dict[s
     return []
 
 
-def __save_conversation_history(user_id: str, conversation_history: list[dict[str, str]], redis_client: Redis) -> None:
+def __save_conversation_history(user_id: str, conversation_history: list[dict[str, str]]) -> None:
     try:
         logger.debug(f'Setting conversation with the User {user_id}', extra={'user_id': user_id, 'history': conversation_history})
         result = redis_client.set(user_id, json.dumps(conversation_history))
@@ -94,6 +94,8 @@ def __get_llm() -> ChatBedrock:
     llm = ChatBedrock(
         model_id=os.getenv('BEDROCK_MODEL_ID'),
         model_kwargs={"max_gen_len": 512},
+        cache=True,
+        verbose=True,
     )
     return llm
 

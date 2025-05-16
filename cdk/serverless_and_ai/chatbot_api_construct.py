@@ -65,6 +65,8 @@ class ChatBotApiConstruct(Construct):
         lambda_function = aws_lambda.Function(
             self,
             'ChatbotLambdaFunction',
+            function_name='ChatbotLambdaFunction',
+            description='Chatbot Lambda Function',
             runtime=LAMBDA_RUNTIME,
             architecture=aws_lambda.Architecture.ARM_64,
             code=aws_lambda.Code.from_asset(BUILD_FOLDER),
