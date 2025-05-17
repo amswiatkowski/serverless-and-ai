@@ -47,6 +47,6 @@ This is a simple project developed with Python and AWS CDK showing how to create
 * [Blog](https://cloudybarz.com/)
 
 ### License
-Copyright © 2024, [Adam Świątkowski](https://github.com/sz3jdii).
+Copyright © 2025, [Adam Świątkowski](https://github.com/sz3jdii).
 Released under the [MIT License](LICENSE).
 
