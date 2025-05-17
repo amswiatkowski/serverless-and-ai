@@ -19,6 +19,8 @@ class ChatBotApiConstruct(Construct):
     def __init__(self, scope: Construct, stack_id: str) -> None:
         super().__init__(scope, stack_id)
         self._scope = scope
+        self._stack_id = stack_id
+        self.region = self._scope.region
 
         self.chatbot_api = self._build_apigw()
         self.chatbot_lambda_layer = self._build_lambda_layer()
@@ -36,8 +38,10 @@ class ChatBotApiConstruct(Construct):
 
     def _build_lambda_role(self) -> aws_iam.Role:
         lambda_role = aws_iam.Role(
-            scope=self, id='chatbot-lambda-role', assumed_by=aws_iam.ServicePrincipal('lambda.amazonaws.com'),
-            role_name='chatbot-lambda-role', managed_policies=[
+            scope=self, id=f'{self._stack_id}chatbot-lambda-role-{self._scope.region.upper()}',
+            role_name=f'{self._stack_id}chatbot-lambda-role-{self._scope.region.upper()}',
+            description="Role used for Lambda function to communicate with Bedrock and ElastiCache",
+            assumed_by=aws_iam.ServicePrincipal('lambda.amazonaws.com'), managed_policies=[
                 aws_iam.ManagedPolicy.from_aws_managed_policy_name('service-role/AWSLambdaBasicExecutionRole'),
                 aws_iam.ManagedPolicy.from_aws_managed_policy_name('service-role/AWSLambdaVPCAccessExecutionRole')
             ], inline_policies={
