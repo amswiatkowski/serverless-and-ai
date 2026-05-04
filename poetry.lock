@@ -314,14 +314,14 @@ typeguard = ">=2.13.3,<4.3.0"
 
 [[package]]
 name = "aws-encryption-sdk"
-version = "4.0.1"
+version = "4.0.5"
 description = "AWS Encryption SDK implementation for Python"
 optional = false
 python-versions = "*"
 groups = ["main"]
 files = [
-    {file = "aws-encryption-sdk-4.0.1.tar.gz", hash = "sha256:7320dc4cf8d8d5a9b4c88a343be93835da18756e05308d3536554be0ca2889a5"},
-    {file = "aws_encryption_sdk-4.0.1-py2.py3-none-any.whl", hash = "sha256:5c2ca9a207e1732542a1370ac7efd630ab6e04d05f98e68badf20927eb95ed1d"},
+    {file = "aws_encryption_sdk-4.0.5-py2.py3-none-any.whl", hash = "sha256:3e6b76afb94c28730487dee71fa1bfc217fcdbab061733c220ff87b88630e40e"},
+    {file = "aws_encryption_sdk-4.0.5.tar.gz", hash = "sha256:a36136181a4d63cbf0d7347d29786c80a4d74a07c79c88a8799e27b27a9c3fc1"},
 ]
 
 [package.dependencies]
@@ -331,7 +331,7 @@ cryptography = ">=3.4.6"
 wrapt = ">=1.10.11"
 
 [package.extras]
-mpl = ["aws-cryptographic-material-providers (>=1.7.4,<=1.10.0)"]
+mpl = ["aws-cryptographic-material-providers (>=1.7.4,<=1.11.2)"]
 
 [[package]]
 name = "aws-lambda-context"
@@ -350,18 +350,18 @@ tests = ["black (==19.3b0)", "bump2version (==0.5.10)", "flake8 (==3.7.8)", "iso
 
 [[package]]
 name = "aws-lambda-powertools"
-version = "3.28.0"
+version = "3.29.0"
 description = "Powertools for AWS Lambda (Python) is a developer toolkit to implement Serverless best practices and increase developer velocity."
 optional = false
 python-versions = "<4.0.0,>=3.10"
 groups = ["main"]
 files = [
-    {file = "aws_lambda_powertools-3.28.0-py3-none-any.whl", hash = "sha256:6db5996784913b4b3a7ff04943cefaef4089440569ecbc2180ce07f08dd87659"},
-    {file = "aws_lambda_powertools-3.28.0.tar.gz", hash = "sha256:8849bc4fb01562aa13f1530a456626192256081ce2cfdf0cb0836ad6cba3c6b1"},
+    {file = "aws_lambda_powertools-3.29.0-py3-none-any.whl", hash = "sha256:e9ca87b5a8a835a7f7e327d5bafa43b6e0c150c6cb8c6b42158b0814377edc7a"},
+    {file = "aws_lambda_powertools-3.29.0.tar.gz", hash = "sha256:a81ce122356343878e095a11bd38f3e9a70f3fa0fea57b10b327d1e8dfe82b6e"},
 ]
 
 [package.dependencies]
-aws-encryption-sdk = {version = ">=3.1.1,<5.0.0", optional = true, markers = "extra == \"all\" or extra == \"datamasking\""}
+aws-encryption-sdk = {version = ">=3.3.1,<4.0.0 || >4.0.0,<4.0.1 || >4.0.1,<4.0.2 || >4.0.2,<4.0.3 || >4.0.3,<4.0.4 || >4.0.4,<5.0.0", optional = true, markers = "extra == \"all\" or extra == \"datamasking\""}
 aws-xray-sdk = {version = ">=2.8.0,<3.0.0", optional = true, markers = "extra == \"tracer\" or extra == \"all\""}
 fastjsonschema = {version = ">=2.14.5,<3.0.0", optional = true, markers = "extra == \"validation\" or extra == \"all\""}
 jmespath = ">=1.0.1,<2.0.0"
@@ -371,10 +371,10 @@ pydantic-settings = {version = ">=2.6.1,<3.0.0", optional = true, markers = "ext
 typing-extensions = ">=4.11.0,<5.0.0"
 
 [package.extras]
-all = ["aws-encryption-sdk (>=3.1.1,<5.0.0)", "aws-xray-sdk (>=2.8.0,<3.0.0)", "fastjsonschema (>=2.14.5,<3.0.0)", "jsonpath-ng (>=1.6.0,<2.0.0)", "pydantic (>=2.4.0,<3.0.0)", "pydantic-settings (>=2.6.1,<3.0.0)"]
+all = ["aws-encryption-sdk (>=3.3.1,!=4.0.0,!=4.0.1,!=4.0.2,!=4.0.3,!=4.0.4,<5.0.0)", "aws-xray-sdk (>=2.8.0,<3.0.0)", "fastjsonschema (>=2.14.5,<3.0.0)", "jsonpath-ng (>=1.6.0,<2.0.0)", "pydantic (>=2.4.0,<3.0.0)", "pydantic-settings (>=2.6.1,<3.0.0)"]
 aws-sdk = ["boto3 (>=1.34.32,<2.0.0)"]
 datadog = ["datadog-lambda (>=8.114.0,<9.0.0)"]
-datamasking = ["aws-encryption-sdk (>=3.1.1,<5.0.0)", "jsonpath-ng (>=1.6.0,<2.0.0)"]
+datamasking = ["aws-encryption-sdk (>=3.3.1,!=4.0.0,!=4.0.1,!=4.0.2,!=4.0.3,!=4.0.4,<5.0.0)", "jsonpath-ng (>=1.6.0,<2.0.0)"]
 kafka-consumer-avro = ["avro (>=1.12.0,<2.0.0)"]
 kafka-consumer-protobuf = ["protobuf (>=6.30.2,<8.0.0)"]
 parser = ["pydantic (>=2.4.0,<3.0.0)"]
