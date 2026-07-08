@@ -3866,14 +3866,14 @@ full = ["httpx (>=0.27.0,<0.29.0)", "itsdangerous", "jinja2", "python-multipart 
 
 [[package]]
 name = "streamlit"
-version = "1.59.0"
+version = "1.59.1"
 description = "A faster way to build and share data apps"
 optional = false
 python-versions = ">=3.10"
 groups = ["dev"]
 files = [
-    {file = "streamlit-1.59.0-py3-none-any.whl", hash = "sha256:d3e3c30caf0915e994b2b263418b28aa05ee5ba90f39e0a59b4c8021dd435d4c"},
-    {file = "streamlit-1.59.0.tar.gz", hash = "sha256:aaa9616f75421cd7cb8c9de8940b2b7edfe266a9d81e78195252d88fd2b00a75"},
+    {file = "streamlit-1.59.1-py3-none-any.whl", hash = "sha256:b00d41fa9024d28ab30b81e56ddf07d61cda6ae625231dcb13e0be6c07ef1e0f"},
+    {file = "streamlit-1.59.1.tar.gz", hash = "sha256:0f75162a43b1cd2542f34bff3168c4ea56c7a151fa80bfea02499913fbfccfca"},
 ]
 
 [package.dependencies]
@@ -3904,7 +3904,7 @@ websockets = ">=12.0.0"
 
 [package.extras]
 all = ["rich (>=11.0.0)", "streamlit[auth,charts,pdf,performance,snowflake,sql]"]
-auth = ["Authlib (>=1.3.2)"]
+auth = ["Authlib (>=1.3.2)", "httpx (>=0.24.1)"]
 charts = ["graphviz (>=0.19.0)", "matplotlib (>=3.0.0)", "orjson (>=3.5.0)", "plotly (>=4.0.0)"]
 pdf = ["streamlit-pdf (>=1.0.0)"]
 performance = ["orjson (>=3.5.0)", "uvloop (>=0.15.2) ; sys_platform != \"win32\" and sys_platform != \"cygwin\" and platform_python_implementation != \"PyPy\""]
