@@ -937,7 +937,7 @@ version = "5.5.2"
 description = "Extensible memoizing collections and decorators"
 optional = false
 python-versions = ">=3.7"
-groups = ["main", "dev"]
+groups = ["main"]
 files = [
     {file = "cachetools-5.5.2-py3-none-any.whl", hash = "sha256:d26a22bcc62eb95c3beabd9f1ee5e820d3d2704fe2967cbe350e20c8ffcd3f0a"},
     {file = "cachetools-5.5.2.tar.gz", hash = "sha256:1a661caa9175d26759571b2e19580f9d6393969e5dfca11fdb1f947a23e640d4"},
@@ -3867,25 +3867,24 @@ full = ["httpx (>=0.27.0,<0.29.0)", "itsdangerous", "jinja2", "python-multipart 
 
 [[package]]
 name = "streamlit"
-version = "1.59.2"
+version = "1.60.0"
 description = "A faster way to build and share data apps"
 optional = false
 python-versions = ">=3.10"
 groups = ["dev"]
 files = [
-    {file = "streamlit-1.59.2-py3-none-any.whl", hash = "sha256:5014cb4f0064bd16c58fe334cb0d3c4b7e2be3d1ce4c02202c07114a33576dab"},
-    {file = "streamlit-1.59.2.tar.gz", hash = "sha256:8fcb35df152868d33eec7ad2d89e276499a5351fb861eb1752b76476be7eb582"},
+    {file = "streamlit-1.60.0-py3-none-any.whl", hash = "sha256:d167d67cf94537600a6e378d8aa0c31eabab26beb243e2a51de9842e2872e393"},
+    {file = "streamlit-1.60.0.tar.gz", hash = "sha256:09f2fdd2aabbd3b3560953795681dd675d5479ac82c21fc2dceadaf9bd484ea3"},
 ]
 
 [package.dependencies]
 altair = ">=4.0,<5.4.0 || >5.4.0,<5.4.1 || >5.4.1,<7"
-anyio = ">=4.0.0"
+anyio = ">=4.0.0,<5"
 blinker = ">=1.5.0,<2"
-cachetools = ">=5.5,<8"
 click = ">=7.0,<9"
 gitpython = ">=3.0.7,<3.1.19 || >3.1.19,<4"
-httptools = ">=0.6.3"
-itsdangerous = ">=2.1.2"
+httptools = ">=0.6.3,<1"
+itsdangerous = ">=2.1.2,<3"
 numpy = ">=1.23,<3"
 packaging = ">=20"
 pandas = ">=1.4.0,<4"
@@ -3893,15 +3892,15 @@ pillow = ">=7.1.0,<13"
 protobuf = ">=3.20,<8"
 pyarrow = ">=7.0,<25"
 pydeck = ">=0.8.0b4,<1"
-python-multipart = ">=0.0.10"
+python-multipart = ">=0.0.10,<1"
 requests = ">=2.27,<3"
-starlette = ">=0.40.0"
+starlette = ">=0.40.0,<2"
 tenacity = ">=8.1.0,<10"
 toml = ">=0.10.1,<2"
 typing-extensions = ">=4.10.0,<5"
-uvicorn = ">=0.30.0"
+uvicorn = ">=0.30.0,<1"
 watchdog = {version = ">=2.1.5,<7", markers = "platform_system != \"Darwin\""}
-websockets = ">=12.0.0"
+websockets = ">=12.0.0,<17"
 
 [package.extras]
 all = ["rich (>=11.0.0)", "streamlit[auth,charts,pdf,performance,snowflake,sql]"]
