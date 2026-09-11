@@ -1878,14 +1878,14 @@ xai = ["langchain-xai"]
 
 [[package]]
 name = "langchain-aws"
-version = "1.7.5"
+version = "1.7.6"
 description = "An integration package connecting AWS and LangChain"
 optional = false
 python-versions = ">=3.10"
 groups = ["main"]
 files = [
-    {file = "langchain_aws-1.7.5-py3-none-any.whl", hash = "sha256:8e83a50677b38760e6fbc383ea58992dee2b7f32ceee73c9b0cc8f333412926c"},
-    {file = "langchain_aws-1.7.5.tar.gz", hash = "sha256:90f50d10c0e55ebbf0a5151304d121a39975cc3e099aad5526e0ee37ea2eeb14"},
+    {file = "langchain_aws-1.7.6-py3-none-any.whl", hash = "sha256:d165931487b1aadf839a2bb17570faf69104fc60a40505bc43300a3bd317b3cb"},
+    {file = "langchain_aws-1.7.6.tar.gz", hash = "sha256:b46a64a16e56f268b9b841d7388ac2c057d77803b09b3933aec673a54904a81f"},
 ]
 
 [package.dependencies]
