@@ -1878,19 +1878,19 @@ xai = ["langchain-xai"]
 
 [[package]]
 name = "langchain-aws"
-version = "1.7.6"
+version = "1.7.7"
 description = "An integration package connecting AWS and LangChain"
 optional = false
 python-versions = ">=3.10"
 groups = ["main"]
 files = [
-    {file = "langchain_aws-1.7.6-py3-none-any.whl", hash = "sha256:d165931487b1aadf839a2bb17570faf69104fc60a40505bc43300a3bd317b3cb"},
-    {file = "langchain_aws-1.7.6.tar.gz", hash = "sha256:b46a64a16e56f268b9b841d7388ac2c057d77803b09b3933aec673a54904a81f"},
+    {file = "langchain_aws-1.7.7-py3-none-any.whl", hash = "sha256:0e2645a40fb8ebbf3f79b0f8dba5c7a619f5785837c64c4dc5e59ba887eedd5a"},
+    {file = "langchain_aws-1.7.7.tar.gz", hash = "sha256:7d61f78f5ebeb1638cad748799e6e2af7e9c8e99a6b3357197b2923468843048"},
 ]
 
 [package.dependencies]
 boto3 = ">=1.43.64"
-langchain-core = ">=1.6.0"
+langchain-core = ">=1.6.3"
 numpy = ">=1.0.0,<3"
 pydantic = ">=2.10.6,<3"
 
@@ -1971,14 +1971,14 @@ tenacity = ">=8.1.0,<8.4.0 || >8.4.0,<10.0.0"
 
 [[package]]
 name = "langchain-core"
-version = "1.6.0"
+version = "1.6.3"
 description = "Building applications with LLMs through composability"
 optional = false
 python-versions = "<4.0.0,>=3.10.0"
 groups = ["main"]
 files = [
-    {file = "langchain_core-1.6.0-py3-none-any.whl", hash = "sha256:d8bb924cd413955d9d3192ccced140407427c3ff51e50ffb941222648da92cb2"},
-    {file = "langchain_core-1.6.0.tar.gz", hash = "sha256:dc72e36678ed26683ec0ad8829b44011fba461d10f9b31dbd9110215e5ec2333"},
+    {file = "langchain_core-1.6.3-py3-none-any.whl", hash = "sha256:114fe1868c9ed60606662b9dd0074bf3152cc6b0b1522ba37cbd6b04f55ca77d"},
+    {file = "langchain_core-1.6.3.tar.gz", hash = "sha256:88b430944fbd4d40fa98135d6c873581d497b6f33515d01962337548e918df2f"},
 ]
 
 [package.dependencies]
