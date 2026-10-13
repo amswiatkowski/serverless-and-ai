@@ -1883,24 +1883,24 @@ xai = ["langchain-xai"]
 
 [[package]]
 name = "langchain-aws"
-version = "1.8.1"
+version = "1.8.2"
 description = "An integration package connecting AWS and LangChain"
 optional = false
 python-versions = ">=3.10"
 groups = ["main"]
 files = [
-    {file = "langchain_aws-1.8.1-py3-none-any.whl", hash = "sha256:81456d613d3f9a67e29db76ce52ca201f2ea2b6cb8098de7d8edd1848dc2ef87"},
-    {file = "langchain_aws-1.8.1.tar.gz", hash = "sha256:45e5971881bfd9044a0b698111ac72d8697a13f6ac8d9e052f91b5b94503092d"},
+    {file = "langchain_aws-1.8.2-py3-none-any.whl", hash = "sha256:aefca4efa259f043903ef3adc93e611a06b2c9a50d04d7b695f2b53096a3f83f"},
+    {file = "langchain_aws-1.8.2.tar.gz", hash = "sha256:7724816305d3ce225e50609401a45ff7fb52ed5a8530cc21feff3ac128f21a4e"},
 ]
 
 [package.dependencies]
 boto3 = ">=1.43.64"
-langchain-core = ">=1.6.7"
+langchain-core = ">=1.6.10"
 numpy = ">=1.0.0,<3"
 pydantic = ">=2.10.6,<3"
 
 [package.extras]
-anthropic = ["anthropic[bedrock] (>=0.95.0)", "aws-bedrock-token-generator (>=1.1.0)", "langchain-anthropic"]
+anthropic = ["anthropic[bedrock] (>=0.95.0)", "aws-bedrock-token-generator (>=1.1.0)", "langchain-anthropic (>=1.7.6)"]
 nova-sonic = ["aws-sdk-bedrock-runtime (>=0.10) ; python_version >= \"3.12\"", "smithy-http[awscrt] ; python_version >= \"3.12\""]
 openai = ["aws-bedrock-token-generator (>=1.1.0)", "langchain-openai (>=1.0.0)", "openai (>=1.106.0)"]
 tools = ["beautifulsoup4 (>=4.13.4)", "bedrock-agentcore (>=1.23.0) ; python_version >= \"3.10\"", "playwright (>=1.53.0)"]
