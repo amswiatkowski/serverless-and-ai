@@ -1908,14 +1908,14 @@ referencing = ">=0.31.0"
 
 [[package]]
 name = "langchain"
-version = "1.5.1"
+version = "1.5.2"
 description = "Building applications with LLMs through composability"
 optional = false
 python-versions = "<4.0.0,>=3.11.0"
 groups = ["main"]
 files = [
-    {file = "langchain-1.5.1-py3-none-any.whl", hash = "sha256:40f9d4c8c3b369840281ea9c7a56f9e647dbfbfa26aea7315c3dc9325d3e5ab2"},
-    {file = "langchain-1.5.1.tar.gz", hash = "sha256:0f5eb1d9345af05143b0ee6d6d09fe20bba18ead9491b69063a6b25211ecd340"},
+    {file = "langchain-1.5.2-py3-none-any.whl", hash = "sha256:e6c2df67337cae4f13b93460e586084ad8c7c7cfd540d27e2572a96308747a7c"},
+    {file = "langchain-1.5.2.tar.gz", hash = "sha256:63816aee7f55503db5c4f266a0874047d417957ae70cbf27397325c584982c52"},
 ]
 
 [package.dependencies]
